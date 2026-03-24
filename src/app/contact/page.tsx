@@ -104,6 +104,14 @@ export default function Contact() {
                     <span className="text-foreground-muted">Monday - Friday</span>
                     <span className="font-semibold">07:30 - 17:00</span>
                   </div>
+                  <div className="flex justify-between py-2 border-b border-border">
+                    <span className="text-foreground-muted">Saturday</span>
+                    <span className="font-semibold">9:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between py-2">
+                    <span className="text-foreground-muted">Sunday</span>
+                    <span className="font-semibold">By Appointment</span>
+                  </div>
                 </div>
               </div>
             </div>

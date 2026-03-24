@@ -40,7 +40,7 @@ export default function Home() {
               <span className="text-foreground">Sounds</span>
             </h1>
             <p className="text-msh-gold text-sm sm:text-base md:text-lg tracking-widest mb-3">CAR AUDIO FITMENT</p>
-            <p className="text-foreground-muted text-xs sm:text-sm mb-6 max-w-lg mx-auto">
+            <p className="text-white text-xs sm:text-sm mb-6 max-w-lg mx-auto">
               Professional car audio installation and sound system services. 
               Transform your driving experience with premium sound quality.
             </p>
