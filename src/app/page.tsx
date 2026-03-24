@@ -10,16 +10,14 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="hero-video"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
+        {/* Hero Image Background */}
+        <Image
+          src="/hero_image.jpg"
+          alt="MSH Sounds Hero"
+          fill
+          className="object-cover"
+          priority
+        />
         
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/60 z-10" />
@@ -41,7 +39,7 @@ export default function Home() {
               <span className="text-msh-red">MSH</span>{" "}
               <span className="text-foreground">Sounds</span>
             </h1>
-            <p className="text-msh-gold text-sm sm:text-base md:text-lg tracking-widest mb-3">CAR AUDIO FITTMENT</p>
+            <p className="text-msh-gold text-sm sm:text-base md:text-lg tracking-widest mb-3">CAR AUDIO FITMENT</p>
             <p className="text-foreground-muted text-xs sm:text-sm mb-6 max-w-lg mx-auto">
               Professional car audio installation and sound system services. 
               Transform your driving experience with premium sound quality.

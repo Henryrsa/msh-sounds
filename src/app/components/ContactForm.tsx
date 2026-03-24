@@ -6,14 +6,14 @@ import { Send, CheckCircle, Loader2 } from "lucide-react";
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
+    carMake: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [errors, setErrors] = useState<{ name?: string; phone?: string; message?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string; carMake?: string; message?: string }>({});
 
-  const phoneNumber = "27716391217";
+  const phoneNumber = "2670712048";
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
@@ -22,10 +22,8 @@ export default function ContactForm() {
       newErrors.name = "Name is required";
     }
     
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^[\d\s+-]{10,}$/.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
+    if (!formData.carMake.trim()) {
+      newErrors.carMake = "Car make and model is required";
     }
     
     if (!formData.message.trim()) {
@@ -43,14 +41,14 @@ export default function ContactForm() {
     
     setIsSubmitting(true);
     
-    const text = `Hello MSH Sounds!%0A%0AName: ${encodeURIComponent(formData.name)}%0APhone: ${encodeURIComponent(formData.phone)}%0AMessage: ${encodeURIComponent(formData.message)}`;
+    const text = `Hello MSH Sounds!%0A%0AName: ${encodeURIComponent(formData.name)}%0ACar Make & Model: ${encodeURIComponent(formData.carMake)}%0AMessage: ${encodeURIComponent(formData.message)}`;
     
     setTimeout(() => {
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
       setIsSubmitting(false);
       setIsSuccess(true);
       
-      setFormData({ name: "", phone: "", message: "" });
+      setFormData({ name: "", carMake: "", message: "" });
       
       setTimeout(() => setIsSuccess(false), 3000);
     }, 800);
@@ -89,25 +87,25 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-foreground-muted mb-2">
-          Phone Number *
+        <label htmlFor="carMake" className="block text-sm font-medium text-foreground-muted mb-2">
+          Car Make and Model *
         </label>
         <input
-          type="tel"
-          id="phone"
+          type="text"
+          id="carMake"
           required
-          value={formData.phone}
+          value={formData.carMake}
           onChange={(e) => {
-            setFormData({ ...formData, phone: e.target.value });
-            if (errors.phone) setErrors({ ...errors, phone: undefined });
+            setFormData({ ...formData, carMake: e.target.value });
+            if (errors.carMake) setErrors({ ...errors, carMake: undefined });
           }}
-          className={`input-field ${errors.phone ? "border-red-500" : ""}`}
-          placeholder="071 123 4567"
-          aria-invalid={!!errors.phone}
-          aria-describedby={errors.phone ? "phone-error" : undefined}
+          className={`input-field ${errors.carMake ? "border-red-500" : ""}`}
+          placeholder="Toyota Hilux 2.4"
+          aria-invalid={!!errors.carMake}
+          aria-describedby={errors.carMake ? "carMake-error" : undefined}
         />
-        {errors.phone && (
-          <p id="phone-error" className="text-red-500 text-xs mt-1">{errors.phone}</p>
+        {errors.carMake && (
+          <p id="carMake-error" className="text-red-500 text-xs mt-1">{errors.carMake}</p>
         )}
       </div>
 
