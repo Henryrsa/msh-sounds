@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | MSH Sounds",
   },
   description: "Professional car audio installation and sound system services in Mamelodi, Gauteng. Transform your driving experience with premium sound quality.",
-  keywords: ["car audio", "car sound system", "subwoofer installation", "car audio fittment", "Mamelodi", "Gauteng", "South Africa"],
+  keywords: ["car audio", "car sound system", "subwoofer installation", "car audio fitment", "Mamelodi", "Gauteng", "South Africa"],
   authors: [{ name: "MSH Sounds" }],
   creator: "MSH Sounds",
   metadataBase: new URL("https://mshsounds.co.za"),
