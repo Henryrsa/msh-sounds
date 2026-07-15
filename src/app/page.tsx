@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import VideoSlideshow from "./components/VideoSlideshow";
-import { ArrowRight, Music, Radio, Wrench } from "lucide-react";
+import { ArrowRight, Music, Radio, Wrench, ShoppingBag, Speaker, Headphones } from "lucide-react";
 
 export default function Home() {
   return (
@@ -130,8 +130,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Shop Preview */}
       <section className="section bg-surface">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="section-title">
+              <span className="text-foreground">Visit Our </span>
+              <span className="text-msh-red">Shop</span>
+            </h2>
+            <p className="section-subtitle mx-auto">
+              Browse our range of premium car audio equipment
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Speaker,
+                title: "Subwoofers",
+                desc: "Deep, powerful bass for your ride",
+              },
+              {
+                icon: Headphones,
+                title: "Amplifiers",
+                desc: "Power your entire sound system",
+              },
+              {
+                icon: Music,
+                title: "Speakers",
+                desc: "Crystal clear audio upgrades",
+              },
+            ].map((product, index) => (
+              <div key={index} className="card p-8 text-center group">
+                <div className="icon-box mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <product.icon className="w-8 h-8" />
+                </div>
+                <h3 className="font-playfair text-xl font-bold mb-3">{product.title}</h3>
+                <p className="text-foreground-muted">{product.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link href="/shop" className="btn-primary gap-2">
+              <ShoppingBag className="w-5 h-5" />
+              Visit Our Shop
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section">
         <div className="container text-center">
           <h2 className="section-title">
             <span className="text-foreground">Ready to </span>

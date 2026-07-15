@@ -1,0 +1,128 @@
+/*
+ * MSH Sounds — Design Tokens
+ * Copy these into your WordPress/WooCommerce theme to match the Next.js site.
+ * https://mshsounds.co.za
+ */
+
+:root {
+  /* ── Brand Colors ── */
+  --msh-red: #E31937;
+  --msh-gold: #D4AF37;
+
+  /* ── Dark Theme (default) ── */
+  --background: #0D0D0D;
+  --surface: #1A1A1A;
+  --surface-hover: #252525;
+  --foreground: #FFFFFF;
+  --foreground-muted: #A0A0A0;
+  --border: #2A2A2A;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-lg: rgba(0, 0, 0, 0.5);
+}
+
+/* ── Light Theme ── */
+.light,
+[data-theme="light"] {
+  --background: #FAFAFA;
+  --surface: #FFFFFF;
+  --surface-hover: #F5F5F5;
+  --foreground: #1A1A1A;
+  --foreground-muted: #666666;
+  --msh-red: #D61F3A;
+  --msh-gold: #C9A227;
+  --border: #E0E0E0;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow-lg: rgba(0, 0, 0, 0.12);
+}
+
+/* ── Typography ── */
+/* Fonts: Playfair Display (headings) + Lato (body) */
+/* Import from Google Fonts in your WordPress theme: */
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap'); */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: var(--msh-red);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--msh-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-lg);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--foreground);
+  font-weight: 600;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--msh-red);
+  color: var(--msh-red);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background: var(--surface-hover);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+/* ── Social Icons ── */
+.social-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--foreground-muted);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--msh-red);
+  border-color: var(--msh-red);
+  color: white;
+  transform: translateY(-3px);
+}

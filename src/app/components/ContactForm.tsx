@@ -13,7 +13,7 @@ export default function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; carMake?: string; message?: string }>({});
 
-  const phoneNumber = "2670712048";
+  const phoneNumber = "27670712048";
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
