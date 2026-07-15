@@ -204,6 +204,33 @@ h1, h2, h3, h4, h5, h6 {
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
 
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  height: 64px;
+}
+
+.equalizer-bar {
+  width: 8px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--msh-red), var(--msh-gold));
+  transform-origin: bottom;
+  animation: equalizer 1s ease-in-out infinite alternate;
+}
+
+.equalizer-bar:nth-child(1) { animation-delay: 0s; }
+.equalizer-bar:nth-child(2) { animation-delay: 0.15s; }
+.equalizer-bar:nth-child(3) { animation-delay: 0.3s; }
+.equalizer-bar:nth-child(4) { animation-delay: 0.45s; }
+.equalizer-bar:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes equalizer {
+  0% { height: 12px; }
+  100% { height: 56px; }
+}
+
 .nav-link {
   position: relative;
   padding: 8px 16px;
