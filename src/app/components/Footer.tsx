@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-surface border-t border-border mt-auto">
       <div className="container py-6 sm:py-8">
-        <div className="grid sm:grid-cols-2 gap-6 items-start">
+        <div className="grid sm:grid-cols-3 gap-6 items-start">
           <div className="text-center sm:text-left">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto sm:mx-0 mb-3">
               <Image
@@ -24,6 +24,14 @@ export default function Footer() {
               33507 30 M-Motaung Street<br />
               Mamelodi, Gauteng
             </p>
+          </div>
+
+          <div className="text-center">
+            <div className="relative w-16 h-16 rounded-full bg-surface-hover border border-border flex items-center justify-center mx-auto mb-3 overflow-hidden">
+              <span className="text-msh-red font-bold text-lg">MSH</span>
+            </div>
+            <h4 className="font-playfair text-sm font-bold">Mohlala Sipho Hlabishi</h4>
+            <p className="text-msh-gold text-xs tracking-wide mt-1">Founder & CEO</p>
           </div>
 
           <div className="text-center sm:text-right">
