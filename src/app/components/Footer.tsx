@@ -45,16 +45,21 @@ export default function Footer() {
           </div>
 
           <div className="text-center">
-            <div className="relative w-16 h-16 rounded-full bg-surface-hover border border-border flex items-center justify-center mx-auto mb-3 overflow-hidden">
-              <span className="text-msh-red font-bold text-lg">MSH</span>
+            <div className="relative w-16 h-16 rounded-full bg-surface-hover border border-border mx-auto mb-3 overflow-hidden">
+              <Image
+                src="/msh_logo-transparent.png"
+                alt="Mohlala Sipho Hlabishi"
+                fill
+                className="object-contain p-1"
+              />
             </div>
             <h4 className="font-playfair text-sm font-bold">Mohlala Sipho Hlabishi</h4>
             <p className="text-msh-gold text-xs tracking-wide mt-1">Founder & CEO</p>
           </div>
 
-          <div className="text-center sm:text-right">
+          <div className="text-center sm:text-center">
             <h4 className="font-semibold text-sm mb-3">Quick Links</h4>
-            <div className="flex flex-col gap-1 mb-4">
+            <div className="flex flex-col gap-1">
               {["Home", "About", "Services", "Shop", "Gallery", "Contact"].map((link) => (
                 <Link 
                   key={link} 
@@ -65,23 +70,24 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-            <div className="flex gap-2 justify-center sm:justify-end">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon"
-                  aria-label={social.name}
-                >
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d={social.icon} />
-                  </svg>
-                </a>
-              ))}
-            </div>
           </div>
+        </div>
+
+        <div className="flex gap-3 justify-center mt-6 pt-6 border-t border-border">
+          {socialLinks.map((social) => (
+            <a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+              aria-label={social.name}
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d={social.icon} />
+              </svg>
+            </a>
+          ))}
         </div>
 
         <div className="border-t border-border mt-6 pt-4 sm:pt-6 text-center">
