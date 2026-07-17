@@ -50,7 +50,7 @@ export default function Footer() {
                 src="/profile.png"
                 alt="Mohlala Sipho Hlabishi"
                 fill
-                className="object-contain p-1"
+                className="object-cover object-top"
               />
             </div>
             <h4 className="font-playfair text-sm font-bold">Mohlala Sipho Hlabishi</h4>
