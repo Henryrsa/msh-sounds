@@ -132,7 +132,7 @@ export default function ContactForm() {
             if (errors.message) setErrors({ ...errors, message: undefined });
           }}
           className={`input-field resize-none ${errors.message ? "border-red-500" : ""}`}
-          placeholder="Tell us about your car audio needs..."
+          placeholder="Tell us exactly what's going on with your car's sound system — the more detail you give, the better we can help."
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
         />

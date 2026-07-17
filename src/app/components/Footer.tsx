@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="text-center">
             <div className="relative w-16 h-16 rounded-full bg-surface-hover border border-border mx-auto mb-3 overflow-hidden">
               <Image
-                src="/msh_logo-transparent.png"
+                src="/profile.png"
                 alt="Mohlala Sipho Hlabishi"
                 fill
                 className="object-contain p-1"
