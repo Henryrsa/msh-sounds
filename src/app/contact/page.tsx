@@ -86,8 +86,8 @@ export default function Contact() {
                     <div>
                       <p className="text-foreground-muted text-sm">Address</p>
                       <p className="font-semibold">
-                        33507 30 M-Motaung Street<br />
-                        Mamelodi, Gauteng
+                        33507 30 Motaung Street<br />
+                        Mahune Valley, Pretoria, 0122
                       </p>
                     </div>
                   </div>
@@ -124,12 +124,12 @@ export default function Contact() {
                 Find Us
               </h2>
               <p className="text-foreground-muted text-sm mb-4">
-                33507 30 M-Motaung Street, Mamelodi, Gauteng
+                33507 30 Motaung Street, Mahune Valley, Pretoria, 0122
               </p>
             </div>
             <div className="aspect-video w-full">
               <iframe
-                src="https://maps.google.com/maps?q=33507+30+M-Motaung+Street,+Mamelodi,+Gauteng&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d!2d28.4178354!3d-25.6966564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95593f7c529d13%3A0xaf03e5d2945876ec!2sMSH+SOUNDS+AND+PROJECTS!5e0!3m2!1sen!2sza"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
