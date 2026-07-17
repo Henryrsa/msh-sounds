@@ -35,7 +35,7 @@ export default function Footer() {
             </div>
             <h3 className="font-playfair text-base sm:text-lg font-bold">
               <span className="text-msh-red">MSH</span>{" "}
-              <span className="text-msh-gold">Sounds</span>
+              <span className="text-msh-gold">Sounds And Projects</span>
             </h3>
             <p className="text-foreground-muted text-xs sm:text-sm mt-1">Professional Car Audio Fitment</p>
             <p className="text-foreground-muted text-xs mt-3">
@@ -92,7 +92,10 @@ export default function Footer() {
 
         <div className="border-t border-border mt-6 pt-4 sm:pt-6 text-center">
           <p className="text-foreground-muted text-xs">
-            &copy; {new Date().getFullYear()} MSH Sounds. All rights reserved.
+            &copy; {new Date().getFullYear()} MSH Sounds And Projects. All rights reserved.
+          </p>
+          <p className="text-foreground-muted text-xs mt-1">
+            Registration No: K2026036547
           </p>
         </div>
       </div>

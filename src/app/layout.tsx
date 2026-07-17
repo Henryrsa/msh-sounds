@@ -20,33 +20,33 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   title: {
-    default: "MSH Sounds - Car Audio Fittment",
-    template: "%s | MSH Sounds",
+    default: "MSH Sounds And Projects - Car Audio Fitment",
+    template: "%s | MSH Sounds And Projects",
   },
   description: "Professional car audio installation and sound system services in Mamelodi, Gauteng. Transform your driving experience with premium sound quality.",
   keywords: ["car audio", "car sound system", "subwoofer installation", "car audio fitment", "Mamelodi", "Gauteng", "South Africa"],
-  authors: [{ name: "MSH Sounds" }],
-  creator: "MSH Sounds",
+  authors: [{ name: "MSH Sounds And Projects" }],
+  creator: "MSH Sounds And Projects",
   metadataBase: new URL("https://mshsounds.co.za"),
   openGraph: {
     type: "website",
     locale: "en_ZA",
     url: "https://mshsounds.co.za",
-    siteName: "MSH Sounds",
-    title: "MSH Sounds - Car Audio Fittment",
+    siteName: "MSH Sounds And Projects",
+    title: "MSH Sounds And Projects - Car Audio Fitment",
     description: "Professional car audio installation and sound system services in Mamelodi, Gauteng.",
     images: [
       {
         url: "/hero_image.jpg",
         width: 1200,
         height: 630,
-        alt: "MSH Sounds - Professional Car Audio Installation",
+        alt: "MSH Sounds And Projects - Professional Car Audio Installation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MSH Sounds - Car Audio Fittment",
+    title: "MSH Sounds And Projects - Car Audio Fitment",
     description: "Professional car audio installation and sound system services in Mamelodi, Gauteng.",
     images: ["/hero_image.jpg"],
   },

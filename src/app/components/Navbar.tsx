@@ -114,6 +114,7 @@ export default function Navbar() {
             ref={menuButtonRef}
             className="p-2 rounded-lg hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-msh-red"
             onClick={toggleMobileMenu}
+            onPointerDown={(e) => e.stopPropagation()}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}

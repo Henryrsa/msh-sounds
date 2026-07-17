@@ -8,7 +8,7 @@ export default function About() {
         <div className="container">
           <h1 className="section-title text-center">
             <span className="text-foreground">About </span>
-            <span className="text-msh-red">MSH Sounds</span>
+            <span className="text-msh-red">MSH Sounds And Projects</span>
           </h1>
           <p className="section-subtitle text-center mx-auto mb-10 sm:mb-16">
             Your trusted car audio professionals in Mamelodi, Gauteng
@@ -28,7 +28,7 @@ export default function About() {
                 Our Story
               </h2>
               <p className="text-foreground-muted leading-relaxed text-center">
-                MSH Sounds is a professional car audio fitment business based in Mamelodi, Gauteng. 
+                MSH Sounds And Projects is a professional car audio fitment business based in Mamelodi, Gauteng. 
                 We specialize in installing high-quality sound systems that transform your driving experience. 
                 With years of experience, we take pride in delivering exceptional audio solutions tailored 
                 to each customer's unique needs and preferences.
