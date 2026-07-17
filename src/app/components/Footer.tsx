@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <footer className="bg-surface border-t border-border mt-auto">
       <div className="container py-6 sm:py-8">
-        <div className="grid sm:grid-cols-3 gap-6 items-start">
+        <div className="grid sm:grid-cols-3 gap-6 items-center">
           <div className="text-center sm:text-left">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto sm:mx-0 mb-3">
               <Image

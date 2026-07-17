@@ -19,7 +19,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -35,22 +34,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    if (isMobileMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMobileMenuOpen]);
-
-  useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -63,6 +46,10 @@ export default function Navbar() {
     if (!isMobileMenuOpen) {
       setTimeout(() => menuButtonRef.current?.focus(), 100);
     }
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -112,9 +99,8 @@ export default function Navbar() {
         <div className="flex items-center gap-2 sm:gap-3 md:hidden">
           <button
             ref={menuButtonRef}
-            className="p-2 rounded-lg hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-msh-red"
+            className="p-2 rounded-lg hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-msh-red relative z-[70]"
             onClick={toggleMobileMenu}
-            onPointerDown={(e) => e.stopPropagation()}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -129,29 +115,35 @@ export default function Navbar() {
       </div>
 
       {isMobileMenuOpen && (
-        <div 
-          ref={menuRef}
-          id="mobile-menu"
-          className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border"
-        >
-          <div className="container py-4 flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg transition-colors ${
-                  pathname === link.href
-                    ? "text-msh-red bg-msh-red/10 font-semibold"
-                    : "hover:bg-surface"
-                }`}
-                aria-current={pathname === link.href ? "page" : undefined}
-              >
-                {link.label}
-              </Link>
-            ))}
+        <>
+          <div 
+            className="md:hidden fixed inset-0 top-0 bg-black/50 z-[55]"
+            onClick={closeMobileMenu}
+            aria-hidden="true"
+          />
+          <div 
+            id="mobile-menu"
+            className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border z-[65]"
+          >
+            <div className="container py-4 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMobileMenu}
+                  className={`px-4 py-3 rounded-lg transition-colors ${
+                    pathname === link.href
+                      ? "text-msh-red bg-msh-red/10 font-semibold"
+                      : "hover:bg-surface"
+                  }`}
+                  aria-current={pathname === link.href ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );
