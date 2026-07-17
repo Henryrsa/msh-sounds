@@ -116,6 +116,31 @@ export default function Contact() {
               </div>
             </div>
           </div>
+
+          <div className="card overflow-hidden mt-8 sm:mt-12 max-w-5xl mx-auto">
+            <div className="p-4 sm:p-6">
+              <h2 className="font-playfair text-xl sm:text-2xl font-bold mb-4 flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-msh-red" />
+                Find Us
+              </h2>
+              <p className="text-foreground-muted text-sm mb-4">
+                33507 30 M-Motaung Street, Mamelodi, Gauteng
+              </p>
+            </div>
+            <div className="aspect-video w-full">
+              <iframe
+                src="https://maps.google.com/maps?q=33507+30+M-Motaung+Street,+Mamelodi,+Gauteng&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="MSH Sounds And Projects location on Google Maps"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </div>
