@@ -30,7 +30,7 @@ export default function Shop() {
               </div>
 
               <p className="text-foreground-muted mb-8 max-w-md mx-auto">
-                MSH Sounds And Projects are tuning up something big. Our online
+                MSH Sounds And Projects is tuning up something big. Our online
                 store with premium car audio equipment is on its way. Stay tuned!
               </p>
 

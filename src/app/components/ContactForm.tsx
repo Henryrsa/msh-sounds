@@ -48,7 +48,9 @@ export default function ContactForm() {
     
     setIsSubmitting(true);
     
-    const text = `Hello MSH Sounds!%0A%0AName: ${encodeURIComponent(formData.name)}%0ACar Make & Model: ${encodeURIComponent(formData.carMake)}%0AMessage: ${encodeURIComponent(formData.message)}`;
+    const text = encodeURIComponent(
+      `Hello MSH Sounds!\n\nName: ${formData.name}\nCar Make & Model: ${formData.carMake}\nMessage: ${formData.message}`
+    );
     
     timeoutRef.current = setTimeout(() => {
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
