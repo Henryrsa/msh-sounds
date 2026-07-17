@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="container py-6 sm:py-8">
         <div className="grid sm:grid-cols-3 gap-6 items-center">
           <div className="text-center sm:text-left">
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto sm:mx-0 mb-3">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 mx-auto sm:mx-0 mb-3">
               <Image
                 src="/msh_logo-transparent.png"
                 alt="MSH Sounds Logo"
@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           <div className="text-center">
-            <div className="relative w-16 h-16 rounded-full bg-surface-hover border border-border mx-auto mb-3 overflow-hidden">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-surface-hover border border-border mx-auto mb-3 overflow-hidden">
               <Image
                 src="/profile.png"
                 alt="Mohlala Sipho Hlabishi"
