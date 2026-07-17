@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 
 const navLinks = [
@@ -20,7 +19,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { setTheme, resolvedTheme } = useTheme();
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -59,10 +57,6 @@ export default function Navbar() {
       document.body.style.overflow = "unset";
     }
   }, [isMobileMenuOpen]);
-
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -108,6 +102,7 @@ export default function Navbar() {
               className={`nav-link text-sm ${
                 pathname === link.href ? "active" : ""
               }`}
+              aria-current={pathname === link.href ? "page" : undefined}
             >
               {link.label}
             </Link>
@@ -149,6 +144,7 @@ export default function Navbar() {
                     ? "text-msh-red bg-msh-red/10 font-semibold"
                     : "hover:bg-surface"
                 }`}
+                aria-current={pathname === link.href ? "page" : undefined}
               >
                 {link.label}
               </Link>

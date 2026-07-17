@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "Professional car audio installation and sound system services in Mamelodi, Gauteng.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/hero_image.jpg",
         width: 1200,
         height: 630,
         alt: "MSH Sounds - Professional Car Audio Installation",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MSH Sounds - Car Audio Fittment",
     description: "Professional car audio installation and sound system services in Mamelodi, Gauteng.",
-    images: ["/og-image.png"],
+    images: ["/hero_image.jpg"],
   },
   robots: {
     index: true,

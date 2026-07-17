@@ -1,6 +1,12 @@
 import VideoSlideshow from "../components/VideoSlideshow";
 import { Play } from "lucide-react";
 
+const galleryItems = [
+  { id: 1, title: "Subwoofer Install", desc: "Dual 12-inch custom enclosure" },
+  { id: 2, title: "Full System Setup", desc: "Complete audio overhaul" },
+  { id: 3, title: "Speaker Upgrade", desc: "Component speaker install" },
+];
+
 export default function Gallery() {
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12">
@@ -21,13 +27,14 @@ export default function Gallery() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="card p-4 group cursor-pointer">
+            {galleryItems.map((item) => (
+              <div key={item.id} className="card p-4 group cursor-pointer">
                 <div className="aspect-video bg-surface-hover rounded-lg flex items-center justify-center relative overflow-hidden">
                   <Play className="w-12 h-12 text-foreground-muted group-hover:text-msh-red group-hover:scale-110 transition-all" />
                   <div className="absolute inset-0 bg-msh-red/0 group-hover:bg-msh-red/10 transition-colors" />
                 </div>
-                <p className="text-foreground-muted text-center mt-4 text-sm">Project {item}</p>
+                <p className="text-foreground font-semibold text-center mt-4 text-sm">{item.title}</p>
+                <p className="text-foreground-muted text-center text-xs">{item.desc}</p>
               </div>
             ))}
           </div>

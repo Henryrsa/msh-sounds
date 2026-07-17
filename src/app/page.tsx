@@ -15,6 +15,7 @@ export default function Home() {
           src="/hero_image.jpg"
           alt="MSH Sounds Hero"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

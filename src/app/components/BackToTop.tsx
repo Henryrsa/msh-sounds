@@ -46,8 +46,8 @@ export default function BackToTop() {
           className="social-icon"
           aria-label={social.name}
         >
-          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d={social.icon} />
+          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d={social.icon} />
           </svg>
         </a>
       ))}

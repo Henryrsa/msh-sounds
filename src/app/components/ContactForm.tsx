@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
 
 export default function ContactForm() {
@@ -12,6 +12,13 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; carMake?: string; message?: string }>({});
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const phoneNumber = "27670712048";
 
@@ -43,14 +50,14 @@ export default function ContactForm() {
     
     const text = `Hello MSH Sounds!%0A%0AName: ${encodeURIComponent(formData.name)}%0ACar Make & Model: ${encodeURIComponent(formData.carMake)}%0AMessage: ${encodeURIComponent(formData.message)}`;
     
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
       setIsSubmitting(false);
       setIsSuccess(true);
       
       setFormData({ name: "", carMake: "", message: "" });
       
-      setTimeout(() => setIsSuccess(false), 3000);
+      timeoutRef.current = setTimeout(() => setIsSuccess(false), 3000);
     }, 800);
   };
 
