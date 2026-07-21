@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import GalleryLightbox from "./GalleryLightbox";
 
@@ -30,11 +30,21 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
   const [activeCategory, setActiveCategory] = useState("all");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   const filteredImages = useMemo(() => {
     if (activeCategory === "all") return images;
     return images.filter((img) => img.category === activeCategory);
   }, [images, activeCategory]);
+
+  const isAll = activeCategory === "all";
+  const displayedImages = isAll ? filteredImages.slice(0, visibleCount) : filteredImages;
+  const hasMore = isAll && visibleCount < filteredImages.length;
+
+  const handleCategoryChange = useCallback((cat: string) => {
+    setActiveCategory(cat);
+    setVisibleCount(4);
+  }, []);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -47,7 +57,7 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setActiveCategory(cat)}
+            onClick={() => handleCategoryChange(cat)}
             className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
               activeCategory === cat
                 ? "bg-msh-red text-white"
@@ -60,11 +70,13 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
       </div>
 
       <p className="text-foreground-muted text-sm text-center mb-6">
-        {filteredImages.length} {filteredImages.length === 1 ? "photo" : "photos"}
+        {isAll
+          ? `${displayedImages.length} of ${filteredImages.length} photos`
+          : `${filteredImages.length} ${filteredImages.length === 1 ? "photo" : "photos"}`}
       </p>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
-        {filteredImages.map((img, index) => (
+        {displayedImages.map((img, index) => (
           <button
             key={img.src}
             onClick={() => openLightbox(index)}
@@ -81,6 +93,17 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
           </button>
         ))}
       </div>
+
+      {hasMore && (
+        <div className="text-center mt-6">
+          <button
+            onClick={() => setVisibleCount((prev) => prev + 8)}
+            className="btn-secondary"
+          >
+            View More
+          </button>
+        </div>
+      )}
 
       {filteredImages.length === 0 && (
         <p className="text-foreground-muted text-center py-12">No photos in this category yet.</p>
