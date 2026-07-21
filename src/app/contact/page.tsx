@@ -155,7 +155,7 @@ export default function Contact() {
               <ElfsightReviews />
               <div className="text-center mt-6">
                 <a
-                  href="https://search.google.com/writereview?placeid=0x1e95593f7c529d13:0xaf03e5d2945876ec"
+                  href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x1e95593f7c529d13:0xaf03e5d2945876ec!12e1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary gap-2"
