@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import VideoSlideshow from "../components/VideoSlideshow";
+import ShowcaseSlideshow from "../components/ShowcaseSlideshow";
 import GalleryGrid from "../components/GalleryGrid";
 
 function getGalleryImages() {
@@ -54,7 +54,7 @@ export default function Gallery() {
 
           <div className="max-w-5xl mx-auto mb-8 sm:mb-12">
             <div className="card p-3 sm:p-6 md:p-8">
-              <VideoSlideshow />
+              <ShowcaseSlideshow />
             </div>
           </div>
 

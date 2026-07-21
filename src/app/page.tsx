@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import ShowcaseSlideshow from "./components/ShowcaseSlideshow";
 import { ArrowRight, Music, Radio, Wrench, ShoppingBag, Speaker, Headphones } from "lucide-react";
 
 export default function Home() {
@@ -77,49 +78,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
-            <Link href="/gallery" className="group card overflow-hidden">
-              <div className="aspect-video relative overflow-hidden rounded-t-xl bg-black">
-                <video
-                  src="/Sound Test.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-              </div>
-              <p className="text-foreground font-semibold text-center py-3 text-sm">Sound Test</p>
-            </Link>
-
-            <Link href="/gallery" className="group card overflow-hidden">
-              <div className="aspect-video relative overflow-hidden rounded-t-xl">
-                <Image
-                  src="/SP1.jpg"
-                  alt="Speaker installation by MSH Sounds"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-              </div>
-              <p className="text-foreground font-semibold text-center py-3 text-sm">SP1 Speaker Setup</p>
-            </Link>
-
-            <Link href="/gallery" className="group card overflow-hidden">
-              <div className="aspect-video relative overflow-hidden rounded-t-xl">
-                <Image
-                  src="/SP2.jpg"
-                  alt="Speaker installation by MSH Sounds"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-              </div>
-              <p className="text-foreground font-semibold text-center py-3 text-sm">SP2 Speaker Setup</p>
-            </Link>
+          <div className="max-w-5xl mx-auto">
+            <ShowcaseSlideshow />
           </div>
 
           <div className="text-center mt-8">
