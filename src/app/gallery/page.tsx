@@ -1,13 +1,45 @@
+import fs from "fs";
+import path from "path";
 import VideoSlideshow from "../components/VideoSlideshow";
-import { Play } from "lucide-react";
+import GalleryGrid from "../components/GalleryGrid";
 
-const galleryItems = [
-  { id: 1, title: "Subwoofer Install", desc: "Dual 12-inch custom enclosure" },
-  { id: 2, title: "Full System Setup", desc: "Complete audio overhaul" },
-  { id: 3, title: "Speaker Upgrade", desc: "Component speaker install" },
-];
+function getGalleryImages() {
+  const galleryDir = path.join(process.cwd(), "public", "gallery");
+  const images: { src: string; alt: string; category: string }[] = [];
+
+  if (!fs.existsSync(galleryDir)) return { images, categories: [] };
+
+  const categories = fs
+    .readdirSync(galleryDir, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name)
+    .sort();
+
+  for (const category of categories) {
+    const catDir = path.join(galleryDir, category);
+    const files = fs.readdirSync(catDir).filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
+
+    for (const file of files) {
+      images.push({
+        src: `/gallery/${category}/${file}`,
+        alt: `${category} installation by MSH Sounds`,
+        category,
+      });
+    }
+  }
+
+  return { images, categories: ["all", ...categories] };
+}
+
+export const metadata = {
+  title: "Gallery | MSH Sounds And Projects",
+  description:
+    "Browse our car audio installations — subwoofers, speakers, amplifiers, and full system setups.",
+};
 
 export default function Gallery() {
+  const { images, categories } = getGalleryImages();
+
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12">
       <section className="section py-8 sm:py-12">
@@ -17,7 +49,7 @@ export default function Gallery() {
             <span className="text-msh-red">Gallery</span>
           </h1>
           <p className="section-subtitle text-center mx-auto mb-10 sm:mb-16">
-            Watch videos of our car audio installations and sound testing
+            Browse our car audio installations and see our work
           </p>
 
           <div className="max-w-5xl mx-auto mb-8 sm:mb-12">
@@ -26,22 +58,9 @@ export default function Gallery() {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {galleryItems.map((item) => (
-              <div key={item.id} className="card p-4 group cursor-pointer">
-                <div className="aspect-video bg-surface-hover rounded-lg flex items-center justify-center relative overflow-hidden">
-                  <Play className="w-12 h-12 text-foreground-muted group-hover:text-msh-red group-hover:scale-110 transition-all" />
-                  <div className="absolute inset-0 bg-msh-red/0 group-hover:bg-msh-red/10 transition-colors" />
-                </div>
-                <p className="text-foreground font-semibold text-center mt-4 text-sm">{item.title}</p>
-                <p className="text-foreground-muted text-center text-xs">{item.desc}</p>
-              </div>
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <GalleryGrid images={images} categories={categories} />
           </div>
-
-          <p className="text-foreground-muted text-center mt-8 text-sm">
-            More videos coming soon! Contact us to see our previous work.
-          </p>
         </div>
       </section>
     </div>

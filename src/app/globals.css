@@ -393,3 +393,11 @@ textarea:focus-visible {
   border-color: var(--msh-red);
   box-shadow: 0 0 0 3px rgba(227, 25, 55, 0.2);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
