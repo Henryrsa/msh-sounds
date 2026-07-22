@@ -33,7 +33,7 @@ const slides: Slide[] = [
   },
   {
     type: "facebook",
-    url: "https://www.facebook.com/share/r/1EJBxZnreg/",
+    url: "https://www.facebook.com/reel/1516225453324919/",
     alt: "MSH Sounds installation showcase",
     title: "MSH Sounds Installation",
   },
