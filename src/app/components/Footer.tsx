@@ -40,7 +40,7 @@ export default function Footer() {
             <p className="text-foreground-muted text-xs sm:text-sm mt-1">Professional Car Audio Fitment</p>
             <p className="text-foreground-muted text-xs mt-3">
               33507 30 Motaung Street<br />
-              Mahune Valley, Pretoria, 0122
+              Mahube Valley, Pretoria, 0122
             </p>
           </div>
 

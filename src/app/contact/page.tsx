@@ -88,7 +88,7 @@ export default function Contact() {
                       <p className="text-foreground-muted text-sm">Address</p>
                       <p className="font-semibold">
                         33507 30 Motaung Street<br />
-                        Mahune Valley, Pretoria, 0122
+                        Mahube Valley, Pretoria, 0122
                       </p>
                     </div>
                   </div>
@@ -125,7 +125,7 @@ export default function Contact() {
                 Find Us
               </h2>
               <p className="text-foreground-muted text-sm mb-4">
-                33507 30 Motaung Street, Mahune Valley, Pretoria, 0122
+                33507 30 Motaung Street, Mahube Valley, Pretoria, 0122
               </p>
             </div>
             <div className="aspect-video w-full">
