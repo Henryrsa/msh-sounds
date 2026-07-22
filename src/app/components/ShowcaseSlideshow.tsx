@@ -5,9 +5,8 @@ import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 import Image from "next/image";
 
 interface Slide {
-  type: "video" | "image" | "facebook" | "tiktok";
-  src?: string;
-  url?: string;
+  type: "video" | "image";
+  src: string;
   alt: string;
   title: string;
 }
@@ -31,15 +30,7 @@ const slides: Slide[] = [
     alt: "Head unit installation by MSH Sounds",
     title: "Head Unit Installation",
   },
-  {
-    type: "facebook",
-    url: "https://www.facebook.com/reel/1516225453324919/",
-    alt: "MSH Sounds installation showcase",
-    title: "MSH Sounds Installation",
-  },
 ];
-
-const SOCIAL_TYPES = new Set(["facebook", "tiktok"]);
 
 export default function ShowcaseSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,15 +39,13 @@ export default function ShowcaseSlideshow() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const isSocialSlide = SOCIAL_TYPES.has(slides[currentIndex].type);
-
   useEffect(() => {
-    if (isPaused || isSocialSlide) return;
+    if (isPaused || slides[currentIndex].type !== "video") return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slides.length);
     }, 8000);
     return () => clearInterval(interval);
-  }, [isPaused, currentIndex, isSocialSlide]);
+  }, [isPaused, currentIndex]);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -103,7 +92,7 @@ export default function ShowcaseSlideshow() {
       onBlur={() => setIsPaused(false)}
     >
       <div className="relative aspect-video bg-black rounded-xl overflow-hidden border border-border">
-        {slide.type === "video" && (
+        {slide.type === "video" ? (
           <video
             ref={videoRef}
             src={slide.src}
@@ -113,11 +102,9 @@ export default function ShowcaseSlideshow() {
             playsInline
             className="w-full h-full object-cover"
           />
-        )}
-
-        {slide.type === "image" && (
+        ) : (
           <Image
-            src={slide.src!}
+            src={slide.src}
             alt={slide.alt}
             fill
             className="object-cover"
@@ -126,20 +113,7 @@ export default function ShowcaseSlideshow() {
           />
         )}
 
-        {slide.type === "facebook" && (
-          <iframe
-            src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(slide.url!)}&show_text=false&width=560`}
-            width="100%"
-            height="100%"
-            style={{ border: "none", overflow: "hidden" }}
-            scrolling="no"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            className="absolute inset-0 w-full h-full"
-          />
-        )}
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
         <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
           <p className="text-white font-semibold text-lg drop-shadow-lg">
