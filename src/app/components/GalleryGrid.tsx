@@ -31,9 +31,8 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
     return images.filter((img) => img.category === activeCategory);
   }, [images, activeCategory]);
 
-  const isAll = activeCategory === "all";
-  const displayedImages = isAll ? filteredImages.slice(0, visibleCount) : filteredImages;
-  const hasMore = isAll && visibleCount < filteredImages.length;
+  const displayedImages = filteredImages.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredImages.length;
 
   const handleCategoryChange = useCallback((cat: string) => {
     setActiveCategory(cat);
@@ -64,9 +63,9 @@ export default function GalleryGrid({ images, categories }: GalleryGridProps) {
       </div>
 
       <p className="text-foreground-muted text-sm text-center mb-6">
-        {isAll
-          ? `${displayedImages.length} of ${filteredImages.length} photos`
-          : `${filteredImages.length} ${filteredImages.length === 1 ? "photo" : "photos"}`}
+        {displayedImages.length === filteredImages.length
+          ? `${filteredImages.length} ${filteredImages.length === 1 ? "photo" : "photos"}`
+          : `${displayedImages.length} of ${filteredImages.length} photos`}
       </p>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
