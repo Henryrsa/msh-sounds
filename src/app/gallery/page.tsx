@@ -28,7 +28,7 @@ function getGalleryImages() {
     }
   }
 
-  return { images, categories: ["all", ...categories] };
+  return { images, categories: [...categories, "all"] };
 }
 
 export const metadata = {

@@ -16,14 +16,8 @@ interface GalleryGridProps {
 }
 
 const categoryLabels: Record<string, string> = {
+  gallery: "Gallery",
   all: "All",
-  subwoofers: "Subwoofers",
-  speakers: "Speakers",
-  amplifiers: "Amplifiers",
-  toyota: "Toyota",
-  vivo: "Vivo",
-  complete: "Complete",
-  uncategorized: "Uncategorized",
 };
 
 export default function GalleryGrid({ images, categories }: GalleryGridProps) {
