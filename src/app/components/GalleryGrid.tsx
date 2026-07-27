@@ -17,6 +17,13 @@ interface GalleryGridProps {
 
 const categoryLabels: Record<string, string> = {
   gallery: "Gallery",
+  "Chevrolet Utility": "Chevrolet Utility",
+  "Headunit Installation": "Headunit Installation",
+  "Nissan NP200": "Nissan NP200",
+  "POLO SEDAN": "POLO SEDAN",
+  "POLO VIVO": "POLO VIVO",
+  Subwoofers: "Subwoofers",
+  "TOYOTA HILUX GD6": "TOYOTA HILUX GD6",
   all: "All",
 };
 
