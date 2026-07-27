@@ -5,13 +5,13 @@ import GalleryGrid from "../components/GalleryGrid";
 
 const videos = [
   {
-    type: "facebook" as const,
-    url: "https://www.facebook.com/reel/1386431092788476/",
+    embedUrl:
+      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1386431092788476%2F&show_text=false&width=267",
     title: "Full System Build",
   },
   {
-    type: "facebook" as const,
-    url: "https://www.facebook.com/share/1FS3eWuMfV/",
+    embedUrl:
+      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1516225453324919%2F&show_text=false&width=267",
     title: "Full Build",
   },
 ];

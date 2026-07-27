@@ -1,60 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { ExternalLink } from "lucide-react";
-
 interface Video {
-  type: "facebook" | "tiktok";
-  url: string;
+  embedUrl: string;
   title: string;
 }
 
 interface FullBuildsSectionProps {
   videos: Video[];
-}
-
-declare global {
-  interface Window {
-    FB?: { XFBML: { parse: (element?: HTMLElement) => void } };
-    fbAsyncInit?: () => void;
-  }
-}
-
-function loadFacebookSDK() {
-  if (document.getElementById("facebook-jssdk")) return;
-  window.fbAsyncInit = function () {
-    window.FB?.XFBML.parse();
-  };
-  const script = document.createElement("script");
-  script.id = "facebook-jssdk";
-  script.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0";
-  script.async = true;
-  script.defer = true;
-  script.crossOrigin = "anonymous";
-  document.head.appendChild(script);
-}
-
-function FacebookEmbed({ url }: { url: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    loadFacebookSDK();
-    const timer = setTimeout(() => {
-      window.FB?.XFBML.parse(containerRef.current ?? undefined);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [url]);
-
-  return (
-    <div ref={containerRef} className="w-full">
-      <div
-        className="fb-video"
-        data-href={url}
-        data-show-text="false"
-        data-width=""
-      />
-    </div>
-  );
 }
 
 export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
@@ -72,36 +24,15 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
             key={index}
             className="shrink-0 w-[280px] sm:w-[320px] card overflow-hidden"
           >
-            {video.type === "facebook" ? (
-              <FacebookEmbed url={video.url} />
-            ) : (
-              <a
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative group"
-              >
-                <div className="aspect-[9/16] bg-surface flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-msh-red/90 flex items-center justify-center group-hover:bg-msh-red transition-colors">
-                    <svg
-                      className="w-7 h-7 text-white ml-1"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-                  <div className="flex items-center gap-2">
-                    <ExternalLink className="w-3.5 h-3.5 text-white/70" />
-                    <span className="text-white/70 text-xs">
-                      Watch on {video.type === "tiktok" ? "TikTok" : "Facebook"}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            )}
+            <div className="relative w-full" style={{ aspectRatio: "267/476" }}>
+              <iframe
+                src={video.embedUrl}
+                className="absolute inset-0 w-full h-full border-none"
+                scrolling="no"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              />
+            </div>
             <div className="p-3">
               <p className="text-sm font-medium text-foreground truncate">
                 {video.title}
