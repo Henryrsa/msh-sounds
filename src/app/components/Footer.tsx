@@ -54,7 +54,7 @@ export default function Footer() {
               />
             </div>
             <h4 className="font-playfair text-sm font-bold">Mohlala Sipho Hlabishi</h4>
-            <p className="text-msh-gold text-xs tracking-wide mt-1">Founder & CEO</p>
+            <p className="text-msh-gold text-xs tracking-wide mt-1">Founder</p>
           </div>
 
           <div className="text-center sm:text-center">
