@@ -28,7 +28,7 @@ const categoryLabels: Record<string, string> = {
 };
 
 export default function GalleryGrid({ images, categories }: GalleryGridProps) {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("gallery");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);

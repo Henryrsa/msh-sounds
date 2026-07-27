@@ -29,7 +29,8 @@ function getGalleryImages() {
   }
 
   const sorted = categories.filter((c) => c !== "gallery");
-  return { images, categories: ["gallery", ...sorted, "all"] };
+  const reordered = [...images.slice(11), ...images.slice(0, 11)];
+  return { images: reordered, categories: ["gallery", ...sorted, "all"] };
 }
 
 export const metadata = {
