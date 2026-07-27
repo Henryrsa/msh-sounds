@@ -27,11 +27,24 @@ export default function About() {
               <h2 className="font-playfair text-2xl font-bold text-center mb-4">
                 Our Story
               </h2>
+              <p className="text-foreground-muted leading-relaxed text-center mb-4">
+                MSH Sounds is a Pretoria-based sound installation company specialising in 
+                high-quality car audio systems and custom audio projects.
+              </p>
+              <p className="text-foreground-muted leading-relaxed text-center mb-4">
+                What started as a passion for clean, powerful sound has grown into MSH Sounds 
+                and Projects (Pty) Ltd — a business dedicated to delivering professional 
+                installations that look as good as they sound. From complete rewires and custom 
+                subwoofer boxes to full system upgrades, we take pride in every project we complete.
+              </p>
+              <p className="text-foreground-muted leading-relaxed text-center mb-4">
+                We work with trusted brands and focus on proper installation techniques so your 
+                system performs reliably for years. Whether you drive an NP200, bakkie, or daily 
+                runner, we build systems that match your style and budget.
+              </p>
               <p className="text-foreground-muted leading-relaxed text-center">
-                MSH Sounds And Projects is a professional car audio fitment business based in Mamelodi, Gauteng. 
-                We specialize in installing high-quality sound systems that transform your driving experience. 
-                With years of experience, we take pride in delivering exceptional audio solutions tailored 
-                to each customer's unique needs and preferences.
+                Based in Mamelodi, Pretoria, we serve clients across Gauteng who want more than 
+                just loud speakers — they want quality sound done right.
               </p>
             </div>
 
@@ -101,7 +114,7 @@ export default function About() {
                   Why Choose Us?
                 </h3>
                 <ul className="space-y-3">
-                  {["Professional installation", "Quality products", "Competitive pricing", "Customer satisfaction"].map((item, index) => (
+                  {["Complete rewires & custom subwoofer boxes", "Full system upgrades", "Trusted brands & proper installation techniques", "Systems built to match your style and budget"].map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-msh-red" />
                       <span className="text-foreground-muted">{item}</span>
