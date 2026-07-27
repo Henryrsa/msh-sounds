@@ -7,8 +7,12 @@ const videos = [
   {
     type: "facebook" as const,
     url: "https://www.facebook.com/reel/1386431092788476/",
-    videoId: "1386431092788476",
     title: "Full System Build",
+  },
+  {
+    type: "facebook" as const,
+    url: "https://www.facebook.com/share/1FS3eWuMfV/",
+    title: "Full Build",
   },
 ];
 

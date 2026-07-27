@@ -6,7 +6,6 @@ import { ExternalLink } from "lucide-react";
 interface Video {
   type: "facebook" | "tiktok";
   url: string;
-  videoId?: string;
   title: string;
 }
 
@@ -23,7 +22,6 @@ declare global {
 
 function loadFacebookSDK() {
   if (document.getElementById("facebook-jssdk")) return;
-  // @ts-expect-error - FB SDK global
   window.fbAsyncInit = function () {
     window.FB?.XFBML.parse();
   };
@@ -36,23 +34,22 @@ function loadFacebookSDK() {
   document.head.appendChild(script);
 }
 
-function FacebookEmbed({ videoId }: { videoId: string }) {
+function FacebookEmbed({ url }: { url: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadFacebookSDK();
-    // Give the SDK a moment to load, then parse
     const timer = setTimeout(() => {
       window.FB?.XFBML.parse(containerRef.current ?? undefined);
     }, 1000);
     return () => clearTimeout(timer);
-  }, [videoId]);
+  }, [url]);
 
   return (
     <div ref={containerRef} className="w-full">
       <div
         className="fb-video"
-        data-href={`https://www.facebook.com/reel/${videoId}/`}
+        data-href={url}
         data-show-text="false"
         data-width=""
       />
@@ -75,8 +72,8 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
             key={index}
             className="shrink-0 w-[280px] sm:w-[320px] card overflow-hidden"
           >
-            {video.type === "facebook" && video.videoId ? (
-              <FacebookEmbed videoId={video.videoId} />
+            {video.type === "facebook" ? (
+              <FacebookEmbed url={video.url} />
             ) : (
               <a
                 href={video.url}
