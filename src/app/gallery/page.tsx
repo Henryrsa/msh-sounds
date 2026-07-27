@@ -1,7 +1,16 @@
 import fs from "fs";
 import path from "path";
-import ShowcaseSlideshow from "../components/ShowcaseSlideshow";
+import FullBuildsSection from "../components/FullBuildsSection";
 import GalleryGrid from "../components/GalleryGrid";
+
+const videos = [
+  {
+    type: "facebook" as const,
+    url: "https://www.facebook.com/reel/1386431092788476/",
+    videoId: "1386431092788476",
+    title: "Full System Build",
+  },
+];
 
 function getGalleryImages() {
   const galleryDir = path.join(process.cwd(), "public", "gallery");
@@ -54,11 +63,7 @@ export default function Gallery() {
             Browse our car audio installations and see our work
           </p>
 
-          <div className="max-w-5xl mx-auto mb-8 sm:mb-12">
-            <div className="card p-3 sm:p-6 md:p-8">
-              <ShowcaseSlideshow />
-            </div>
-          </div>
+          <FullBuildsSection videos={videos} />
 
           <div className="max-w-6xl mx-auto">
             <GalleryGrid images={images} categories={categories} />
