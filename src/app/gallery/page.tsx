@@ -19,6 +19,11 @@ const videos = [
       "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2003440407191477%2F&show_text=false&width=267",
     title: "Full Build",
   },
+  {
+    embedUrl:
+      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F967843352909101%2F&show_text=false&width=267",
+    title: "Full Build",
+  },
 ];
 
 function getGalleryImages() {
