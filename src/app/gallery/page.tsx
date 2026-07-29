@@ -77,11 +77,11 @@ export default function Gallery() {
             Browse our car audio installations and see our work
           </p>
 
-          <FullBuildsSection videos={videos} />
-
           <div className="max-w-6xl mx-auto">
             <GalleryGrid images={images} categories={categories} />
           </div>
+
+          <FullBuildsSection videos={videos} />
         </div>
       </section>
     </div>
