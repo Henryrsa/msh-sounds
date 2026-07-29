@@ -81,7 +81,7 @@ export default function Gallery() {
             Browse our car audio installations and see our work
           </p>
 
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto mb-12">
             <GalleryGrid images={images} categories={categories} />
           </div>
 
