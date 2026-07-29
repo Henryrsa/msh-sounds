@@ -21,7 +21,7 @@ const videos = [
   },
   {
     embedUrl:
-      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F967843352909101%2F&show_text=false&width=267",
+      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F788862933605298%2F&show_text=false&width=267",
     title: "Full Build",
   },
 ];
