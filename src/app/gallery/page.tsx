@@ -8,21 +8,25 @@ import GalleryGrid from "../components/GalleryGrid";
 const videos = [
   {
     url: "https://www.facebook.com/reel/1386431092788476/",
+    embedUrl: "https://www.facebook.com/video/embed?video_id=1386431092788476",
     title: "Full System Build",
     type: "facebook" as const,
   },
   {
     url: "https://www.facebook.com/reel/1516225453324919/",
+    embedUrl: "https://www.facebook.com/video/embed?video_id=1516225453324919",
     title: "Full Build",
     type: "facebook" as const,
   },
   {
     url: "https://www.facebook.com/reel/2003440407191477/",
+    embedUrl: "https://www.facebook.com/video/embed?video_id=2003440407191477",
     title: "Full Build",
     type: "facebook" as const,
   },
   {
-    url: "https://www.tiktok.com/@msh_sound",
+    url: "https://www.tiktok.com/@msh_sound/video/7668004321245596935",
+    embedUrl: "https://www.tiktok.com/embed/v2/7668004321245596935",
     title: "Full Build",
     type: "tiktok" as const,
   },
