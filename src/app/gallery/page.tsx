@@ -8,27 +8,23 @@ import GalleryGrid from "../components/GalleryGrid";
 const videos = [
   {
     url: "https://www.facebook.com/reel/1386431092788476/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1386431092788476%2F&show_text=false",
     title: "Full System Build",
+    type: "facebook" as const,
   },
   {
     url: "https://www.facebook.com/reel/1516225453324919/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1516225453324919%2F&show_text=false",
     title: "Full Build",
+    type: "facebook" as const,
   },
   {
     url: "https://www.facebook.com/reel/2003440407191477/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2003440407191477%2F&show_text=false",
     title: "Full Build",
+    type: "facebook" as const,
   },
   {
-    url: "https://www.facebook.com/reel/1988303598478147/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1988303598478147%2F&show_text=false",
+    url: "https://www.tiktok.com/@msh_sound",
     title: "Full Build",
+    type: "tiktok" as const,
   },
 ];
 

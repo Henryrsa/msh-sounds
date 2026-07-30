@@ -5,8 +5,8 @@ import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 interface Video {
   url: string;
-  embedUrl: string;
   title: string;
+  type: "facebook" | "tiktok";
 }
 
 interface FullBuildsSectionProps {
@@ -94,28 +94,36 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
               key={index}
               className="shrink-0 w-[280px] sm:w-[320px] card overflow-hidden"
             >
-              <div className="relative w-full" style={{ aspectRatio: "267/476" }}>
-                <iframe
-                  src={video.embedUrl}
-                  className="absolute inset-0 w-full h-full border-none"
-                  scrolling="no"
-                  allowFullScreen
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                />
-              </div>
-              <div className="p-3 flex items-center justify-between gap-2">
+              <a
+                href={video.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative group"
+              >
+                <div className="aspect-[9/16] bg-surface flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-msh-red/90 flex items-center justify-center group-hover:bg-msh-red transition-colors">
+                    <svg
+                      className="w-7 h-7 text-white ml-1"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                  <div className="flex items-center gap-2">
+                    <ExternalLink className="w-3.5 h-3.5 text-white/70" />
+                    <span className="text-white/70 text-xs">
+                      Watch on {video.type === "tiktok" ? "TikTok" : "Facebook"}
+                    </span>
+                  </div>
+                </div>
+              </a>
+              <div className="p-3">
                 <p className="text-sm font-medium text-foreground truncate">
                   {video.title}
                 </p>
-                <a
-                  href={video.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="shrink-0 flex items-center gap-1 text-xs text-msh-red hover:underline"
-                >
-                  Watch on Facebook
-                  <ExternalLink className="w-3 h-3" />
-                </a>
               </div>
             </div>
           ))}
