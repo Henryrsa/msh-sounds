@@ -7,7 +7,6 @@ interface Video {
   url: string;
   embedUrl: string;
   title: string;
-  showText?: boolean;
 }
 
 interface FullBuildsSectionProps {
@@ -95,7 +94,7 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
               key={index}
               className="shrink-0 w-[280px] sm:w-[320px] card overflow-hidden"
             >
-              <div className="relative w-full" style={{ aspectRatio: video.showText ? "267/591" : "267/476" }}>
+              <div className="relative w-full" style={{ aspectRatio: "267/476" }}>
                 <iframe
                   src={video.embedUrl}
                   className="absolute inset-0 w-full h-full border-none"
