@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
+import { ExternalLink } from "lucide-react";
 import FullBuildsSection from "../components/FullBuildsSection";
+import ElfsightReviews from "../components/ElfsightReviews";
 import GalleryGrid from "../components/GalleryGrid";
 
 const videos = [
@@ -86,6 +88,30 @@ export default function Gallery() {
           </div>
 
           <FullBuildsSection videos={videos} />
+
+          <div className="max-w-4xl mx-auto mt-8 sm:mt-12">
+            <div className="card p-4 sm:p-6">
+              <h2 className="font-playfair text-xl sm:text-2xl font-bold mb-4">
+                <span className="text-foreground">Customer </span>
+                <span className="text-msh-gold">Reviews</span>
+              </h2>
+              <p className="text-foreground-muted text-sm mb-6">
+                See what our customers are saying about us on Google
+              </p>
+              <ElfsightReviews />
+              <div className="text-center mt-6">
+                <a
+                  href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x1e95593f7c529d13:0xaf03e5d2945876ec!12e1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary gap-2"
+                >
+                  Leave Us a Review on Google
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

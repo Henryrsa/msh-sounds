@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import ShowcaseSlideshow from "./components/ShowcaseSlideshow";
-import { ArrowRight, Music, Radio, Wrench, ShoppingBag, Speaker, Headphones } from "lucide-react";
+import ElfsightReviews from "./components/ElfsightReviews";
+import { ArrowRight, Music, Radio, Wrench, ShoppingBag, Speaker, Headphones, Star, ExternalLink } from "lucide-react";
 
 export default function Home() {
   return (
@@ -188,6 +189,38 @@ export default function Home() {
               Visit Our Shop
               <ArrowRight className="w-4 h-4" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Reviews */}
+      <section className="section bg-surface">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="section-title">
+              <span className="text-foreground">Customer </span>
+              <span className="text-msh-gold">Reviews</span>
+            </h2>
+            <p className="section-subtitle mx-auto">
+              See what our customers are saying about us on Google
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="card p-4 sm:p-6">
+              <ElfsightReviews />
+              <div className="text-center mt-6">
+                <a
+                  href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x1e95593f7c529d13:0xaf03e5d2945876ec!12e1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary gap-2"
+                >
+                  Leave Us a Review on Google
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
