@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 
 interface Video {
@@ -8,6 +9,7 @@ interface Video {
   embedUrl: string;
   title: string;
   type: "facebook" | "tiktok";
+  thumbnail?: string;
 }
 
 interface FullBuildsSectionProps {
@@ -25,6 +27,7 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [failed, setFailed] = useState<Set<number>>(new Set());
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
@@ -127,13 +130,28 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
                     className="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface to-background"
                     aria-label={`Play ${video.title}`}
                   >
-                    <span className="w-20 h-20 rounded-full bg-msh-red/20 flex items-center justify-center">
-                      <span className="w-16 h-16 rounded-full bg-msh-red/30 flex items-center justify-center">
-                        <Play className="w-7 h-7 text-msh-red ml-1" />
+                    {video.thumbnail && !failed.has(index) && (
+                      <Image
+                        src={video.thumbnail}
+                        alt={video.title}
+                        fill
+                        sizes="320px"
+                        className="object-cover"
+                        onError={() =>
+                          setFailed((prev) => new Set(prev).add(index))
+                        }
+                      />
+                    )}
+                    <span className="absolute inset-0 bg-black/40" />
+                    <span className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                      <span className="w-20 h-20 rounded-full bg-msh-red/20 flex items-center justify-center">
+                        <span className="w-16 h-16 rounded-full bg-msh-red/30 flex items-center justify-center">
+                          <Play className="w-7 h-7 text-msh-red ml-1" />
+                        </span>
                       </span>
-                    </span>
-                    <span className="text-sm font-semibold text-foreground-muted px-4 text-center">
-                      {video.title}
+                      <span className="text-sm font-semibold text-white px-4 text-center drop-shadow">
+                        {video.title}
+                      </span>
                     </span>
                   </button>
                 )}

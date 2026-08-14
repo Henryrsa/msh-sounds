@@ -11,6 +11,7 @@ const videos = [
     embedUrl:
       "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1386431092788476%2F&show_text=false&width=267&t=0",
     title: "Full System Build",
+    thumbnail: "/full-builds/fb-1386431092788476.jpg",
     type: "facebook" as const,
   },
   {
@@ -18,6 +19,7 @@ const videos = [
     embedUrl:
       "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1516225453324919%2F&show_text=false&width=267&t=0",
     title: "Full Build",
+    thumbnail: "/full-builds/fb-1516225453324919.jpg",
     type: "facebook" as const,
   },
   {
@@ -25,12 +27,14 @@ const videos = [
     embedUrl:
       "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2003440407191477%2F&show_text=true&width=267&t=0",
     title: "Full Build",
+    thumbnail: "/full-builds/fb-2003440407191477.jpg",
     type: "facebook" as const,
   },
   {
     url: "https://www.tiktok.com/@msh_sound/video/7668004321245596935",
     embedUrl: "https://www.tiktok.com/embed/v2/7668004321245596935",
     title: "Full Build",
+    thumbnail: "/full-builds/tiktok-7668004321245596935.jpg",
     type: "tiktok" as const,
   },
 ];
