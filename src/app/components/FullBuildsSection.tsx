@@ -19,7 +19,8 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
   const [hovering, setHovering] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [stoppedNonce, setStoppedNonce] = useState<Record<number, number>>({});
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
@@ -40,7 +41,7 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
     if (videos.length === 0) return;
 
     const interval = setInterval(() => {
-      if (activeIndex !== null || hovering || !scrollRef.current) return;
+      if (playingIndex !== null || hovering || !scrollRef.current) return;
 
       const card = scrollRef.current.querySelector(".shrink-0") as HTMLElement | null;
       if (!card) return;
@@ -56,7 +57,7 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [videos, hovering, activeIndex]);
+  }, [videos, hovering, playingIndex]);
 
   const scrollBy = (direction: "left" | "right") => {
     const el = scrollRef.current;
@@ -64,7 +65,18 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
     const card = el.querySelector(".shrink-0") as HTMLElement | null;
     if (!card) return;
     const distance = card.offsetWidth + 16;
-    el.scrollBy({ left: direction === "left" ? -distance : direction === "right" ? distance : distance, behavior: "smooth" });
+    el.scrollBy({ left: direction === "left" ? -distance : distance, behavior: "smooth" });
+  };
+
+  const handleFocus = (e: React.FocusEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    const attr = target.getAttribute("data-index");
+    if (attr === null) return;
+    const i = Number(attr);
+    if (playingIndex !== null && playingIndex !== i) {
+      setStoppedNonce((n) => ({ ...n, [playingIndex]: (n[playingIndex] ?? 0) + 1 }));
+    }
+    setPlayingIndex(i);
   };
 
   if (videos.length === 0) return null;
@@ -90,16 +102,17 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
           className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0"
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
+          onFocus={handleFocus}
         >
           {videos.map((video, index) => (
             <div
               key={index}
               className="shrink-0 w-[280px] sm:w-[320px] card overflow-hidden"
-              onMouseEnter={() => setActiveIndex(index)}
             >
               <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
                 <iframe
-                  key={index === activeIndex ? `vid-${index}-active` : `vid-${index}-${activeIndex}`}
+                  key={`vid-${index}-${stoppedNonce[index] ?? 0}`}
+                  data-index={index}
                   src={video.embedUrl}
                   className="absolute inset-0 w-full h-full border-none"
                   scrolling="no"
