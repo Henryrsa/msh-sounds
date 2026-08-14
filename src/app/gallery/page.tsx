@@ -60,9 +60,9 @@ function getGalleryImages() {
     }
   }
 
-  const sorted = categories.filter((c) => c !== "gallery");
+  const sorted = categories.filter((c) => c !== "gallery" && c !== "More");
   const reordered = [...images.slice(11), ...images.slice(0, 11)];
-  return { images: reordered, categories: ["gallery", ...sorted, "all"] };
+  return { images: reordered, categories: ["gallery", ...sorted, "More", "all"] };
 }
 
 export const metadata = {

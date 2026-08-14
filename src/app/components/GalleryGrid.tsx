@@ -24,6 +24,7 @@ const categoryLabels: Record<string, string> = {
   "POLO VIVO": "POLO VIVO",
   Subwoofers: "Subwoofers",
   "TOYOTA HILUX GD6": "TOYOTA HILUX GD6",
+  More: "More",
   all: "All",
 };
 

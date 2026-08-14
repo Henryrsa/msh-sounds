@@ -1,0 +1,113 @@
+================================================================
+MSH SOUNDS AND PROJECTS - WEBSITE SUMMARY
+================================================================
+
+Website: https://mshsounds.co.za
+Business: MSH Sounds And Projects
+Registration: K2026036547
+Type: Car Audio Fitment business website
+
+================================================================
+THEME & PURPOSE
+================================================================
+Dark, premium "sound system" aesthetic for a car audio business.
+Features an audio equalizer animation, glassmorphism hero section,
+and red/gold brand colors. Has both dark (default) and light modes.
+
+================================================================
+COLOR PALETTE (Dark theme default)
+================================================================
+Token                 | Color     | Usage
+----------------------+-----------+----------------------------------
+--background          | #0D0D0D   | Near-black page background
+--surface             | #1A1A1A   | Cards, surfaces
+--surface-hover       | #252525   | Card hover state
+--foreground          | #FFFFFF   | White text
+--foreground-muted    | #A0A0A0   | Subdued text
+--msh-red             | #E31937   | Primary brand red (buttons, links,
+                      |           | active nav)
+--msh-gold            | #D4AF37   | Gold accent (secondary highlights)
+--border              | #2A2A2A   | Borders
+
+Light mode:
+--background          | #FAFAFA   | White background
+--msh-red             | #D61F3A   | Red
+--msh-gold            | #C9A227   | Gold
+
+Gradient: red -> gold used on icon boxes, text-gradient, equalizer.
+
+================================================================
+TECH STACK
+================================================================
+Framework       | Next.js 15.1.9 (App Router)
+Language        | TypeScript 5
+UI Library      | React 18.3.1
+Styling         | Tailwind CSS 4 (@tailwindcss/postcss)
+                | + custom CSS in globals.css
+Icons           | lucide-react 0.460.0
+Theming         | next-themes 0.4.6 (dark/light toggle)
+Fonts           | Playfair Display (headings) + Lato (body)
+                | via next/font/google
+Image handling  | next/image (remote patterns: https://**)
+Dev tools       | ESLint 9, TypeScript, heic-convert + sharp
+                | (gallery HEIC conversion and resizing)
+Deployment      | Vercel (auto-deploy from GitHub)
+
+================================================================
+PAGES (6)
+================================================================
+Home     (/)         - Hero with glass card, logo glow, our work
+                       slideshow, services/shop previews, customer
+                       reviews, CTA
+About    (/about)    - Business story and description
+Services (/services) - Service listings with feature lists
+Shop     (/shop)     - Product categories
+Gallery  (/gallery)  - Photo grid with category tabs, lightbox,
+                       Full Builds video section, reviews
+Contact  (/contact)  - Contact form, Google Maps embed, reviews,
+                       WhatsApp link
+
+================================================================
+KEY COMPONENTS
+================================================================
+- Navbar, Footer, ThemeToggle, BackToTop, ThemeProvider
+- GalleryGrid (category tabs + "View More" button)
+- GalleryLightbox (image viewer)
+- FullBuildsSection (auto-scrolling video cards + scroll arrows)
+- ContactForm (WhatsApp via wa.me/27670712048)
+- ElfsightReviews (Google reviews widget)
+- ShowcaseSlideshow / VideoSlideshow
+
+================================================================
+THIRD-PARTY INTEGRATIONS
+================================================================
+- Google Maps      - CID-based business embed
+                     (0x1e95593f7c529d13:0xaf03e5d2945876ec)
+- Google Reviews   - Elfsight widget
+                     (ID: dbb9a8d6-a554-417b-8aa0-b79b929f45eb)
+- Facebook reels   - iframe embeds (plugins/video.php)
+- TikTok           - video embeds (tiktok.com/embed/v2/)
+- WhatsApp         - click-to-chat contact form
+
+================================================================
+GALLERY ASSETS
+================================================================
+171+ images across 9 categories:
+- Gallery
+- Chevrolet Utility
+- Headunit Installation
+- Nissan NP200
+- POLO SEDAN
+- POLO VIVO
+- Subwoofers
+- TOYOTA HILUX GD6
+
+All images converted from HEIC to JPG and resized to 1200px max
+(~30MB total).
+
+================================================================
+BUSINESS DETAILS
+================================================================
+Address : 33507 30 Motaung Street, Mahube Valley, Pretoria, 0122
+Phone   : WhatsApp 27670712048
+Socials : Facebook (MSH Sounds), TikTok (@msh_sound)
