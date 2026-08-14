@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 
 interface Video {
   url: string;
@@ -14,13 +14,17 @@ interface FullBuildsSectionProps {
   videos: Video[];
 }
 
+function withAutoplay(url: string): string {
+  if (!url) return url;
+  return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+}
+
 export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [hovering, setHovering] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
-  const [stoppedNonce, setStoppedNonce] = useState<Record<number, number>>({});
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
@@ -68,17 +72,6 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
     el.scrollBy({ left: direction === "left" ? -distance : distance, behavior: "smooth" });
   };
 
-  const handleFocus = (e: React.FocusEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLElement;
-    const attr = target.getAttribute("data-index");
-    if (attr === null) return;
-    const i = Number(attr);
-    if (playingIndex !== null && playingIndex !== i) {
-      setStoppedNonce((n) => ({ ...n, [playingIndex]: (n[playingIndex] ?? 0) + 1 }));
-    }
-    setPlayingIndex(i);
-  };
-
   if (videos.length === 0) return null;
 
   return (
@@ -102,31 +95,52 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
           className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0"
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
-          onFocus={handleFocus}
         >
-          {videos.map((video, index) => (
+          {videos.map((video, index) => {
+            const isPlaying = playingIndex === index;
+            return (
             <div
               key={index}
               className="shrink-0 w-[280px] sm:w-[320px] card overflow-hidden"
             >
               <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
-                <iframe
-                  key={`vid-${index}-${stoppedNonce[index] ?? 0}`}
-                  data-index={index}
-                  src={video.embedUrl}
-                  className="absolute inset-0 w-full h-full border-none"
-                  scrolling="no"
-                  allowFullScreen
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                />
-              </div>
-              <div className="p-3">
-                <p className="text-sm font-medium text-foreground truncate">
-                  {video.title}
-                </p>
+                {isPlaying ? (
+                  <>
+                    <iframe
+                      src={withAutoplay(video.embedUrl)}
+                      className="absolute inset-0 w-full h-full border-none"
+                      scrolling="no"
+                      allowFullScreen
+                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    />
+                    <button
+                      onClick={() => setPlayingIndex(null)}
+                      className="absolute top-2 right-2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white transition-colors"
+                      aria-label="Close video"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => setPlayingIndex(index)}
+                    className="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface to-background"
+                    aria-label={`Play ${video.title}`}
+                  >
+                    <span className="w-20 h-20 rounded-full bg-msh-red/20 flex items-center justify-center">
+                      <span className="w-16 h-16 rounded-full bg-msh-red/30 flex items-center justify-center">
+                        <Play className="w-7 h-7 text-msh-red ml-1" />
+                      </span>
+                    </span>
+                    <span className="text-sm font-semibold text-foreground-muted px-4 text-center">
+                      {video.title}
+                    </span>
+                  </button>
+                )}
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
         {canScrollRight && (
           <button
