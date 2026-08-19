@@ -2,7 +2,7 @@
 MSH SOUNDS AND PROJECTS - WEBSITE SUMMARY
 ================================================================
 
-Website: https://mshsounds.co.za
+Website: https://msh-sounds.vercel.app
 Business: MSH Sounds And Projects
 Registration: K2026036547
 Type: Car Audio Fitment business website

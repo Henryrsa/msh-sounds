@@ -3,7 +3,7 @@
 A premium, dark-themed marketing website for **MSH Sounds And Projects**, a car-audio
 fitment business based in Pretoria, South Africa.
 
-- **Live site:** https://mshsounds.co.za
+- **Live site:** https://msh-sounds.vercel.app
 - **Built with:** Next.js 15 (App Router) · TypeScript · Tailwind CSS 4 ·
   next-themes (dark/light) · lucide-react
 
