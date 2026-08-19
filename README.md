@@ -15,6 +15,10 @@ fitment business based in Pretoria, South Africa.
 - Contact form with WhatsApp click-to-chat, Google Maps embed, and reviews widget
 - 170+ images across 9 categories (converted/optimized from HEIC)
 
+## Preview
+
+![MSH Sounds website preview](/screenshot.png)
+
 ## Getting Started
 ```bash
 npm install
