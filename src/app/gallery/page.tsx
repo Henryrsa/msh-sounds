@@ -1,11 +1,12 @@
 import fs from "fs";
 import path from "path";
 import { ExternalLink } from "lucide-react";
-import FullBuildsSection from "../components/FullBuildsSection";
+// Full Builds temporarily taken down — restore by uncommenting the import, videos array, and render below.
+// import FullBuildsSection from "../components/FullBuildsSection";
 import ElfsightReviews from "../components/ElfsightReviews";
 import GalleryGrid from "../components/GalleryGrid";
 
-const videos = [
+/* const videos = [
   {
     url: "https://www.facebook.com/reel/1386431092788476/",
     embedUrl:
@@ -37,7 +38,7 @@ const videos = [
     thumbnail: "/full-builds/tiktok-7668004321245596935.jpg",
     type: "tiktok" as const,
   },
-];
+]; */
 
 function getGalleryImages() {
   const galleryDir = path.join(process.cwd(), "public", "gallery");
@@ -94,7 +95,9 @@ export default function Gallery() {
             <GalleryGrid images={images} categories={categories} />
           </div>
 
+          {/* Full Builds temporarily taken down
           <FullBuildsSection videos={videos} />
+          */}
 
           <div className="max-w-4xl mx-auto mt-8 sm:mt-12">
             <div className="card p-4 sm:p-6">
