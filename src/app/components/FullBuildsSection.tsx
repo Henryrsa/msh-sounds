@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Play, X } from "lucide-react";
 
 interface Video {
   url: string;
@@ -10,6 +10,9 @@ interface Video {
   title: string;
   type: "facebook" | "tiktok";
   thumbnail?: string;
+  /** When true the card links out to the video instead of embedding it
+   *  (used for posts where Facebook has embedding disabled). */
+  external?: boolean;
 }
 
 interface FullBuildsSectionProps {
@@ -125,35 +128,67 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
                     </button>
                   </>
                 ) : (
-                  <button
-                    onClick={() => setPlayingIndex(index)}
-                    className="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface to-background"
-                    aria-label={`Play ${video.title}`}
-                  >
-                    {video.thumbnail && !failed.has(index) && (
-                      <Image
-                        src={video.thumbnail}
-                        alt={video.title}
-                        fill
-                        sizes="320px"
-                        className="object-cover"
-                        onError={() =>
-                          setFailed((prev) => new Set(prev).add(index))
-                        }
-                      />
-                    )}
-                    <span className="absolute inset-0 bg-black/40" />
-                    <span className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                      <span className="w-20 h-20 rounded-full bg-msh-red/20 flex items-center justify-center">
-                        <span className="w-16 h-16 rounded-full bg-msh-red/30 flex items-center justify-center">
-                          <Play className="w-7 h-7 text-msh-red ml-1" />
+                  (() => {
+                    const triggerClass =
+                      "absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface to-background";
+                    const content = (
+                      <>
+                        {video.thumbnail && !failed.has(index) && (
+                          <Image
+                            src={video.thumbnail}
+                            alt={video.title}
+                            fill
+                            sizes="320px"
+                            className="object-cover"
+                            onError={() =>
+                              setFailed((prev) => new Set(prev).add(index))
+                            }
+                          />
+                        )}
+                        <span className="absolute inset-0 bg-black/40" />
+                        <span className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                          <span className="w-20 h-20 rounded-full bg-msh-red/20 flex items-center justify-center">
+                            <span className="w-16 h-16 rounded-full bg-msh-red/30 flex items-center justify-center">
+                              {video.external ? (
+                                <ExternalLink className="w-7 h-7 text-msh-red" />
+                              ) : (
+                                <Play className="w-7 h-7 text-msh-red ml-1" />
+                              )}
+                            </span>
+                          </span>
+                          <span className="text-sm font-semibold text-white px-4 text-center drop-shadow">
+                            {video.title}
+                          </span>
                         </span>
-                      </span>
-                      <span className="text-sm font-semibold text-white px-4 text-center drop-shadow">
-                        {video.title}
-                      </span>
-                    </span>
-                  </button>
+                      </>
+                    );
+
+                    if (video.external) {
+                      return (
+                        <a
+                          href={video.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={triggerClass}
+                          aria-label={`Open "${video.title}" on ${
+                            video.type === "tiktok" ? "TikTok" : "Facebook"
+                          }`}
+                        >
+                          {content}
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <button
+                        onClick={() => setPlayingIndex(index)}
+                        className={triggerClass}
+                        aria-label={`Play ${video.title}`}
+                      >
+                        {content}
+                      </button>
+                    );
+                  })()
                 )}
               </div>
             </div>
