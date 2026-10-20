@@ -37,6 +37,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw source media — never commit (only optimized outputs go in /public)
+/updates/
+/QuickShare_*/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

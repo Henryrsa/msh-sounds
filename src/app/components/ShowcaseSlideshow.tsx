@@ -19,6 +19,12 @@ const slides: Slide[] = [
     title: "Sound Test",
   },
   {
+    type: "video",
+    src: "/home-page.mp4",
+    alt: "Custom Pioneer subwoofer enclosure fitted by MSH Sounds",
+    title: "Custom Subwoofer Build",
+  },
+  {
     type: "image",
     src: "/SP1.jpg",
     alt: "Speakers and subwoofers installation by MSH Sounds",
@@ -34,18 +40,16 @@ const slides: Slide[] = [
 
 export default function ShowcaseSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (isPaused || slides[currentIndex].type !== "video") return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, [isPaused, currentIndex]);
+  // Video slides advance when they finish playing (no fixed timer), so a
+  // visitor can watch the whole clip without the carousel moving under them.
+  const handleVideoEnded = useCallback(() => {
+    setIsMuted(true);
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -54,11 +58,8 @@ export default function ShowcaseSlideshow() {
   }, [isMuted, currentIndex]);
 
   useEffect(() => {
-    if (videoRef.current) {
-      if (currentIndex === 0 && slides[0].type === "video") {
-        videoRef.current.play().catch(() => {});
-      }
-    }
+    if (slides[currentIndex].type !== "video") return;
+    videoRef.current?.play().catch(() => {});
   }, [currentIndex]);
 
   const goToSlide = useCallback((index: number) => {
@@ -83,23 +84,16 @@ export default function ShowcaseSlideshow() {
   const slide = slides[currentIndex];
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full max-w-5xl mx-auto"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
-    >
+    <div ref={containerRef} className="relative w-full max-w-5xl mx-auto">
       <div className="relative aspect-video bg-black rounded-xl overflow-hidden border border-border">
         {slide.type === "video" ? (
           <video
             ref={videoRef}
             src={slide.src}
             autoPlay
-            loop
             muted={isMuted}
             playsInline
+            onEnded={handleVideoEnded}
             className="w-full h-full object-cover"
           />
         ) : (
