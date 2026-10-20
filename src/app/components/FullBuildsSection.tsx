@@ -26,7 +26,6 @@ function withAutoplay(url: string): string {
 
 export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [hovering, setHovering] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
@@ -46,28 +45,6 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
     updateScrollState();
     return () => el.removeEventListener("scroll", updateScrollState);
   }, [updateScrollState]);
-
-  useEffect(() => {
-    if (videos.length === 0) return;
-
-    const interval = setInterval(() => {
-      if (playingIndex !== null || hovering || !scrollRef.current) return;
-
-      const card = scrollRef.current.querySelector(".shrink-0") as HTMLElement | null;
-      if (!card) return;
-
-      const cardWidth = card.offsetWidth + 16;
-      const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-
-      if (scrollRef.current.scrollLeft >= maxScroll - 10) {
-        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [videos, hovering, playingIndex]);
 
   const scrollBy = (direction: "left" | "right") => {
     const el = scrollRef.current;
@@ -99,8 +76,6 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
         <div
           ref={scrollRef}
           className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0"
-          onMouseEnter={() => setHovering(true)}
-          onMouseLeave={() => setHovering(false)}
         >
           {videos.map((video, index) => {
             const isPlaying = playingIndex === index;
