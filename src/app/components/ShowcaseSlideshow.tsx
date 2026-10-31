@@ -14,12 +14,6 @@ interface Slide {
 const slides: Slide[] = [
   {
     type: "video",
-    src: "/Sound Test.mp4",
-    alt: "MSH Sounds sound test",
-    title: "Sound Test",
-  },
-  {
-    type: "video",
     src: "/home-page.mp4",
     alt: "Custom Pioneer subwoofer enclosure fitted by MSH Sounds",
     title: "Custom Subwoofer Build",
