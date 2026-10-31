@@ -2,26 +2,16 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ExternalLink, Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 
 interface Video {
-  url: string;
-  embedUrl: string;
+  videoSrc: string;
   title: string;
-  type: "facebook" | "tiktok";
   thumbnail?: string;
-  /** When true the card links out to the video instead of embedding it
-   *  (used for posts where Facebook has embedding disabled). */
-  external?: boolean;
 }
 
 interface FullBuildsSectionProps {
   videos: Video[];
-}
-
-function withAutoplay(url: string): string {
-  if (!url) return url;
-  return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
 }
 
 export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
@@ -87,12 +77,14 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
               <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
                 {isPlaying ? (
                   <>
-                    <iframe
-                      src={withAutoplay(video.embedUrl)}
-                      className="absolute inset-0 w-full h-full border-none"
-                      scrolling="no"
-                      allowFullScreen
-                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    <video
+                      key={video.videoSrc}
+                      src={video.videoSrc}
+                      poster={video.thumbnail}
+                      controls
+                      autoPlay
+                      playsInline
+                      className="absolute inset-0 w-full h-full bg-black object-contain"
                     />
                     <button
                       onClick={() => setPlayingIndex(null)}
@@ -124,11 +116,7 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
                         <span className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                           <span className="w-20 h-20 rounded-full bg-msh-red/20 flex items-center justify-center">
                             <span className="w-16 h-16 rounded-full bg-msh-red/30 flex items-center justify-center">
-                              {video.external ? (
-                                <ExternalLink className="w-7 h-7 text-msh-red" />
-                              ) : (
-                                <Play className="w-7 h-7 text-msh-red ml-1" />
-                              )}
+                              <Play className="w-7 h-7 text-msh-red ml-1" />
                             </span>
                           </span>
                           <span className="text-sm font-semibold text-white px-4 text-center drop-shadow">
@@ -137,22 +125,6 @@ export default function FullBuildsSection({ videos }: FullBuildsSectionProps) {
                         </span>
                       </>
                     );
-
-                    if (video.external) {
-                      return (
-                        <a
-                          href={video.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={triggerClass}
-                          aria-label={`Open "${video.title}" on ${
-                            video.type === "tiktok" ? "TikTok" : "Facebook"
-                          }`}
-                        >
-                          {content}
-                        </a>
-                      );
-                    }
 
                     return (
                       <button

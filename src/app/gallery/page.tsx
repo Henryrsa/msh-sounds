@@ -5,71 +5,49 @@ import FullBuildsSection from "../components/FullBuildsSection";
 import ElfsightReviews from "../components/ElfsightReviews";
 import GalleryGrid from "../components/GalleryGrid";
 
-// Sources: "Full builds links.txt". Facebook share links were resolved to their
-// canonical reel URLs — the video plugin does not accept /share/ short links.
+// Videos are self-hosted from /public/full-builds/videos (downloaded from the
+// TikTok/Facebook pages listed in "Full builds links.txt") so they always play
+// on-site — the platform embeds block or redirect some reels.
 const videos = [
   {
-    url: "https://www.tiktok.com/@msh_sound/video/7671222789583473927",
-    embedUrl: "https://www.tiktok.com/embed/v2/7671222789583473927",
+    videoSrc: "/full-builds/videos/tiktok-7671222789583473927.mp4",
     title: "Nissan NP200 Amp Rack",
     thumbnail: "/full-builds/tiktok-7671222789583473927.jpg",
-    type: "tiktok" as const,
   },
   {
-    url: "https://www.tiktok.com/@msh_sound/video/7669696619830463762",
-    embedUrl: "https://www.tiktok.com/embed/v2/7669696619830463762",
+    videoSrc: "/full-builds/videos/tiktok-7669696619830463762.mp4",
     title: "Suzuki Ertiga Install",
     thumbnail: "/full-builds/tiktok-7669696619830463762.jpg",
-    type: "tiktok" as const,
   },
   {
-    url: "https://www.tiktok.com/@msh_sound/video/7648662952853179655",
-    embedUrl: "https://www.tiktok.com/embed/v2/7648662952853179655",
+    videoSrc: "/full-builds/videos/tiktok-7648662952853179655.mp4",
     title: "POLO TSI Vocal Test",
     thumbnail: "/full-builds/tiktok-7648662952853179655.jpg",
-    type: "tiktok" as const,
   },
   {
-    url: "https://www.facebook.com/reel/1075132578567518/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1075132578567518%2F&show_text=false&width=267&t=0",
+    videoSrc: "/full-builds/videos/fb-1075132578567518.mp4",
     title: "Polo Vivo Full Build",
     thumbnail: "/full-builds/fb-1075132578567518.jpg",
-    type: "facebook" as const,
   },
   {
-    url: "https://www.facebook.com/reel/1846502219649806/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1846502219649806%2F&show_text=false&width=267&t=0",
+    videoSrc: "/full-builds/videos/fb-1846502219649806.mp4",
     title: "Toyota Hilux GD6 Install",
     thumbnail: "/full-builds/fb-1846502219649806.jpg",
-    type: "facebook" as const,
-    external: true, // embedding disabled by Facebook — opens the reel instead
   },
   {
-    url: "https://www.facebook.com/reel/2196808137814124/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2196808137814124%2F&show_text=false&width=267&t=0",
+    videoSrc: "/full-builds/videos/fb-2196808137814124.mp4",
     title: "Nissan NP200 Full Build",
     thumbnail: "/full-builds/fb-2196808137814124.jpg",
-    type: "facebook" as const,
   },
   {
-    url: "https://www.facebook.com/reel/788862933605298/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F788862933605298%2F&show_text=false&width=267&t=0",
+    videoSrc: "/full-builds/videos/fb-788862933605298.mp4",
     title: "Nissan NP200 Sound System",
     thumbnail: "/full-builds/fb-788862933605298.jpg",
-    type: "facebook" as const,
-    external: true, // embedding disabled by Facebook — opens the reel instead
   },
   {
-    url: "https://www.facebook.com/reel/1078753601250464/",
-    embedUrl:
-      "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1078753601250464%2F&show_text=false&width=267&t=0",
+    videoSrc: "/full-builds/videos/fb-1078753601250464.mp4",
     title: "Full System Sound Test",
     thumbnail: "/full-builds/fb-1078753601250464.jpg",
-    type: "facebook" as const,
   },
 ];
 
