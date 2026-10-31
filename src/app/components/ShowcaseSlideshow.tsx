@@ -14,14 +14,20 @@ interface Slide {
 const slides: Slide[] = [
   {
     type: "video",
+    src: "/Sound Test.mp4",
+    alt: "MSH Sounds sound test",
+    title: "Sound Test",
+  },
+  {
+    type: "video",
     src: "/home-page.mp4",
     alt: "Custom Pioneer subwoofer enclosure fitted by MSH Sounds",
     title: "Custom Subwoofer Build",
   },
   {
     type: "image",
-    src: "/SP1.jpg",
-    alt: "Speakers and subwoofers installation by MSH Sounds",
+    src: "/gallery/Subwoofers/speakers-and-subs.jpg",
+    alt: "Dual Targa amplifiers and ported subwoofer enclosure installed in a boot by MSH Sounds",
     title: "Speakers & Subwoofers",
   },
   {
