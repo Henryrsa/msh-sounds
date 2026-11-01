@@ -32,6 +32,14 @@ fs.mkdirSync(DEST, { recursive: true });
 const IMAGE_EXT = /\.(heic|jpg|jpeg|png|webp)$/i;
 const files = fs.readdirSync(SRC).filter((f) => IMAGE_EXT.test(f));
 
+/** True when the buffer really is HEIC/HEIF (files are sometimes
+ *  mislabeled — e.g. a JPEG saved with a .heic extension). */
+function isHeic(buf) {
+  if (buf.length < 12 || buf.toString("ascii", 4, 8) !== "ftyp") return false;
+  const brand = buf.toString("ascii", 8, 12);
+  return ["heic", "heix", "hevc", "heif", "mif1", "msf1"].includes(brand);
+}
+
 if (files.length === 0) {
   console.log("No images found in", SRC);
   process.exit(0);
@@ -56,7 +64,7 @@ for (const file of files) {
   try {
     let input = fs.readFileSync(src);
 
-    if (/\.heic$/i.test(file)) {
+    if (isHeic(input)) {
       input = await heicConvert({ buffer: input, format: "JPEG", quality: 0.9 });
     }
 
