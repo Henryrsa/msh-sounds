@@ -2,6 +2,13 @@ import ContactForm from "../components/ContactForm";
 import ElfsightReviews from "../components/ElfsightReviews";
 import { User, Phone, Mail, MapPin, Clock, MessageCircle, Star, ExternalLink } from "lucide-react";
 
+export const metadata = {
+  title: "Contact",
+  description:
+    "Get a free quote on your car audio installation — WhatsApp MSH Sounds in Pretoria or send us a message through the contact form.",
+  alternates: { canonical: "/contact" },
+};
+
 export default function Contact() {
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12">

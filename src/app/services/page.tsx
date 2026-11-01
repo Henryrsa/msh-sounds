@@ -40,6 +40,13 @@ const services = [
   },
 ];
 
+export const metadata = {
+  title: "Services",
+  description:
+    "Car audio services in Pretoria: subwoofer installation, amplifier setup, full system installs, speaker upgrades, sound deadening, and repairs.",
+  alternates: { canonical: "/services" },
+};
+
 export default function Services() {
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12">

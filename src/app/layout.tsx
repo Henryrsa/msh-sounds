@@ -54,6 +54,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Root canonical; pages below override with their own path.
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export const viewport: Viewport = {

@@ -10,6 +10,13 @@ const aboutPoints = [
   "Local Pretoria-based service (Mamelodi East, near MAMS Mall) with a hands-on, results-driven approach.",
 ];
 
+export const metadata = {
+  title: "About",
+  description:
+    "MSH Sounds And Projects is a Pretoria car audio fitment specialist based in Mamelodi East — expert installations, custom solutions, and competitive pricing.",
+  alternates: { canonical: "/about" },
+};
+
 export default function About() {
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12">

@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Volume2 } from "lucide-react";
 
+export const metadata = {
+  title: "Shop",
+  description:
+    "Browse our range of car audio equipment — subwoofers, amplifiers, speakers, and head units, supplied and fitted by MSH Sounds in Pretoria.",
+  alternates: { canonical: "/shop" },
+};
+
 export default function Shop() {
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-8 sm:pb-12">

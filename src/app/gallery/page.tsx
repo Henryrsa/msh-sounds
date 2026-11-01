@@ -82,9 +82,10 @@ function getGalleryImages() {
 }
 
 export const metadata = {
-  title: "Gallery | MSH Sounds And Projects",
+  title: "Gallery",
   description:
     "Browse our car audio installations — subwoofers, speakers, amplifiers, and full system setups.",
+  alternates: { canonical: "/gallery" },
 };
 
 export default function Gallery() {
