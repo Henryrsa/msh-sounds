@@ -3,7 +3,7 @@
 A premium, dark-themed marketing website for **MSH Sounds And Projects**, a car-audio
 fitment business based in Pretoria, South Africa.
 
-- **Live site:** https://msh-sounds.vercel.app
+- **Live site:** https://mshsounds.co.za
 - **Built with:** Next.js 15 (App Router) · TypeScript · Tailwind CSS 4 ·
   next-themes (dark/light) · lucide-react
 
@@ -28,4 +28,10 @@ npm run lint     # eslint
 ```
 
 ## Deploy
-Deployed on Vercel (auto-deploy from the GitHub `master` branch).
+Production: **xneelo** shared hosting (Apache, no Node.js) — `npm run build`
+produces a static export in `out/` (via `output: "export"`), which is uploaded
+to the hosting root with FileZilla. `public/.htaccess` handles HTTPS, the
+`www` → apex redirect, pretty URLs, and caching.
+
+Staging: Vercel auto-deploys the same build from GitHub `master`
+(msh-sounds.vercel.app).

@@ -2,7 +2,7 @@
 MSH SOUNDS AND PROJECTS - WEBSITE SUMMARY
 ================================================================
 
-Website: https://msh-sounds.vercel.app
+Website: https://mshsounds.co.za
 Business: MSH Sounds And Projects
 Registration: K2026036547
 Type: Car Audio Fitment business website
@@ -51,7 +51,10 @@ Fonts           | Playfair Display (headings) + Lato (body)
 Image handling  | next/image (remote patterns: https://**)
 Dev tools       | ESLint 9, TypeScript, heic-convert + sharp
                 | (gallery HEIC conversion and resizing)
-Deployment      | Vercel (auto-deploy from GitHub)
+Deployment      | Static export (output: "export") uploaded to xneelo
+                | shared hosting (Apache) via FileZilla; public/.htaccess
+                | handles HTTPS, www redirect, pretty URLs, caching.
+                | Staging: Vercel auto-deploy from GitHub
 
 ================================================================
 PAGES (6)
