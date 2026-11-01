@@ -4,6 +4,10 @@
 
 RewriteEngine On
 
+# Don't let mod_dir 301 "/gallery" -> "/gallery/" before the rewrite below
+# gets a chance to serve gallery.html (keeps the sitemap/canonical URL exact).
+DirectorySlash Off
+
 # --- Canonical host + HTTPS (single pass, no redirect chains) ---
 # www.mshsounds.co.za (or any other host) and plain HTTP both 301 to
 # https://mshsounds.co.za — matches metadataBase and sitemap.xml.
