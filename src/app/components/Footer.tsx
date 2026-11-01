@@ -97,6 +97,9 @@ export default function Footer() {
           <p className="text-foreground-muted text-xs mt-1">
             Registration No: K2026036547
           </p>
+          <p className="text-foreground-muted text-xs mt-1">
+            Site by Mukwevho Henry · Champbucks
+          </p>
         </div>
       </div>
     </footer>
