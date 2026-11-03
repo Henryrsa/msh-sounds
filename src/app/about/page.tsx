@@ -112,7 +112,7 @@ export default function About() {
                     </div>
                     <div>
                       <p className="text-foreground-muted text-sm">Address</p>
-                      <p className="font-semibold">33507 30 Motaung Street, Mahube Valley, Pretoria, 0122</p>
+                      <p className="font-semibold">33507 30 M-Motaung Street, Mahube Valley, Pretoria, 0122</p>
                     </div>
                   </div>
                 </div>
