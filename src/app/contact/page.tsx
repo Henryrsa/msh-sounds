@@ -83,7 +83,12 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-foreground-muted text-sm">Email</p>
-                      <p className="font-semibold">Mohlalasipho67@gmail.com</p>
+                      <a
+                        href="mailto:info@mshsounds.co.za"
+                        className="font-semibold hover:text-msh-red transition-colors"
+                      >
+                        info@mshsounds.co.za
+                      </a>
                     </div>
                   </div>
 
